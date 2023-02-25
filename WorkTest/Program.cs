@@ -13,8 +13,8 @@ Console.Clear();
 Console.WriteLine("Введите  пять элементов массива");
 
 string[] array = GetArrayFromUser(5);
-string[] array3 = NewArray(array);
-string[] finalArray = FillArray(array3,array);
+int newSize  = NewArraySize(array);
+string[] finalArray = FillArray(newSize,array);
 
 Console.WriteLine($"[ {String.Join(", ", array)} ] -> [ {String.Join(", ", finalArray)} ]");
 
@@ -30,29 +30,31 @@ string[] GetArrayFromUser(int size)
     return arr;
 }
 
-string[] NewArray(string[] arr3)
+int NewArraySize(string[] arr3)
 {
     int count = 0;
-    string[] ThreeSym = new string[count];
+    int nSize = 0;
+    int m = 3;
 
     for (int i = 0; i < arr3.Length; i++)
     {
-        if (arr3[i].Length <= 3)
+        if (arr3[i].Length <= m)
         {
             count++;
-            ThreeSym = new string[count];
+            nSize = count;
         }
     }
-    return ThreeSym;
+    return nSize;
 }
 
-string[] FillArray(string[] arr3, string[] arr)
+string[] FillArray(int n, string[] arr)
 {
     int count1 = 0;
-    string[] Sym = new string[arr3.Length];
+    int m1 = 3;
+    string[] Sym = new string[n];
     for (int i = 0; i < arr.Length; i++)
     {
-        if (arr[i].Length <= 3)
+        if (arr[i].Length <= m1)
         {
             Sym[count1] = arr[i];
             count1++;
